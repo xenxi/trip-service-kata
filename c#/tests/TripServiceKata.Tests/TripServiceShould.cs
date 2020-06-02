@@ -1,6 +1,6 @@
 ﻿namespace TripServiceKata.Tests
 {
-    public class TripServiceTest
+    public class TripServiceShould
     {
     }
 }

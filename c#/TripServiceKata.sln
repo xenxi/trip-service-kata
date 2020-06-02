@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripServiceKata", "TripServiceKata\TripServiceKata.csproj", "{45E49CBA-0800-4391-AD80-E23837C66D95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripServiceKata", "src\TripServiceKata\TripServiceKata.csproj", "{45E49CBA-0800-4391-AD80-E23837C66D95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripServiceKata.Tests", "TripServiceKata.Tests\TripServiceKata.Tests.csproj", "{41370430-26A5-44FE-A12D-D63ECD369009}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripServiceKata.Tests", "tests\TripServiceKata.Tests\TripServiceKata.Tests.csproj", "{41370430-26A5-44FE-A12D-D63ECD369009}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
