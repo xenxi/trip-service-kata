@@ -1,12 +1,15 @@
-﻿using TripServiceKata.Exception;
+﻿using TripServiceKata.Entity;
+using TripServiceKata.Exception;
 
-namespace TripServiceKata.User
+namespace TripServiceKata.Service
 {
     public class UserSession
     {
         private static readonly UserSession userSession = new UserSession();
 
-        private UserSession() { }
+        private UserSession()
+        {
+        }
 
         public static UserSession GetInstance()
         {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace TripServiceKata.User
+namespace TripServiceKata.Entity
 {
     public class User
     {
-        private List<Trip.Trip> trips = new List<Trip.Trip>();
+        private List<Trip> trips = new List<Trip>();
         private List<User> friends = new List<User>();
 
         public List<User> GetFriends()
@@ -17,12 +17,12 @@ namespace TripServiceKata.User
             friends.Add(user);
         }
 
-        public void AddTrip(Trip.Trip trip)
+        public void AddTrip(Trip trip)
         {
             trips.Add(trip);
         }
 
-        public List<Trip.Trip> Trips()
+        public List<Trip> Trips()
         {
             return trips;
         } 
