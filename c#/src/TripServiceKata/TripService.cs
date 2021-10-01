@@ -9,8 +9,8 @@ namespace TripServiceKata
     {
         private readonly UserSession _userSession;
 
-        public TripService() {
-            _userSession = UserSession.GetInstance();
+        public TripService(UserSession getInstance) {
+            _userSession = getInstance;
         }
 
         public List<Trip> GetTripsByUser(User user)
