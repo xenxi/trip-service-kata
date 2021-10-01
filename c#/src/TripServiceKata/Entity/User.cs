@@ -4,7 +4,7 @@ namespace TripServiceKata.Entity
 {
     public class User
     {
-        private List<User> friends = new List<User>();
+        private readonly List<User> friends = new List<User>();
 
         public List<User> GetFriends()
         {
