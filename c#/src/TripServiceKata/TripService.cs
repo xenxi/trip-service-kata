@@ -7,9 +7,9 @@ namespace TripServiceKata
 {
     public class TripService
     {
-        private readonly UserSession _userSession;
+        private readonly IUserSession _userSession;
 
-        public TripService(UserSession userSession) {
+        public TripService(IUserSession userSession) {
             _userSession = userSession;
         }
 
