@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using NSubstitute;
 using TripServiceKata.Entity;
@@ -32,6 +33,19 @@ namespace TripServiceKata.Tests {
           var trips =  _service.GetTripsByUser(aGivenUser);
 
           trips.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void fail()
+        {
+            var aGivenLoggedUser = new User();
+            var aGivenUser = new User();
+            aGivenUser.AddFriend(aGivenLoggedUser);
+            _userSession.GetLoggedUser().Returns(aGivenLoggedUser);
+
+            var trips =  _service.GetTripsByUser(aGivenUser);
+
+            trips.Should().BeSameAs(new List<Trip>());
         }
     }
 }
