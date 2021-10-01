@@ -14,7 +14,7 @@ namespace TripServiceKata.Tests {
 
         public TripServiceShould() {
             _userSession = Substitute.For<IUserSession>();
-            _service = new TripService(_userSession);
+            _service = new TripService(_userSession, new TripDAO());
         }
 
         [Fact]

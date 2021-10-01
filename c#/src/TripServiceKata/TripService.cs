@@ -8,11 +8,11 @@ namespace TripServiceKata
     public class TripService
     {
         private readonly IUserSession _userSession;
-        private readonly TripDAO _tripDao;
+        private readonly ITripDAO _tripDao;
 
-        public TripService(IUserSession userSession) {
+        public TripService(IUserSession userSession, ITripDAO tripDao) {
             _userSession = userSession;
-            _tripDao = new TripDAO();
+            _tripDao = tripDao;
         }
 
         public List<Trip> GetTripsByUser(User user)
