@@ -27,34 +27,32 @@ namespace TripServiceKata.Tests {
         }
 
         [Fact]
-        public void trips_be_empty_when_they_are_not_friends()
-        {
+        public void trips_be_empty_when_they_are_not_friends() {
             var aGivenUser = new User();
             _userSession.GetLoggedUser().Returns(aGivenUser);
 
-          var trips =  _service.GetTripsByUser(aGivenUser);
+            var trips = _service.GetTripsByUser(aGivenUser);
 
-          trips.Should().BeEmpty();
+            trips.Should().BeEmpty();
         }
 
         [Fact]
-        public void found_trips_when_they_are_friends()
-        {
-            var aGivenLoggedUser = AGivenUserWithOneFriend(out var aGivenUser);
+        public void found_trips_when_they_are_friends() {
+            var (aGivenUser, aGivenLoggedUser) = AGivenUserWithOneFriend();
             _userSession.GetLoggedUser().Returns(aGivenLoggedUser);
             List<Trip> aExpectedListOfTrip = new List<Trip>();
             _tripDao.FindTripsByUser(aGivenUser).Returns(aExpectedListOfTrip);
 
-            var trips =  _service.GetTripsByUser(aGivenUser);
+            var trips = _service.GetTripsByUser(aGivenUser);
 
             trips.Should().BeSameAs(aExpectedListOfTrip);
         }
 
-        private static User AGivenUserWithOneFriend(out User aGivenUser) {
-            var aGivenLoggedUser = new User();
-            aGivenUser = new User();
-            aGivenUser.AddFriend(aGivenLoggedUser);
-            return aGivenLoggedUser;
+        private static (User user, User userFriend) AGivenUserWithOneFriend() {
+            var user = new User();
+            var userFriend = new User();
+            user.AddFriend(userFriend);
+            return (user, userFriend);
         }
     }
 }
