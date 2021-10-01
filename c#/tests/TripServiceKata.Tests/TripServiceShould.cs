@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using NSubstitute;
 using TripServiceKata.Entity;
@@ -28,7 +29,7 @@ namespace TripServiceKata.Tests {
 
         [Fact]
         public void trips_be_empty_when_they_are_not_friends() {
-            var aGivenUser = new User();
+            var aGivenUser = UserMother.Create();
             ShouldFindLoggedUser(aGivenUser);
 
             var trips = _service.GetTripsByUser(aGivenUser);
@@ -38,7 +39,7 @@ namespace TripServiceKata.Tests {
 
         [Fact]
         public void found_trips_when_they_are_friends() {
-            var (aGivenUser, aGivenLoggedUser) = AGivenUserWithOneFriend();
+            var (aGivenUser, aGivenLoggedUser)  = UserMother.CreateWithOneFriend();
             ShouldFindLoggedUser(aGivenLoggedUser);
             var aExpectedListOfTrip = new List<Trip>();
             _tripDao.FindTripsByUser(aGivenUser).Returns(aExpectedListOfTrip);
@@ -50,13 +51,6 @@ namespace TripServiceKata.Tests {
 
         private void ShouldFindLoggedUser(User aGivenLoggedUser) {
             _userSession.GetLoggedUser().Returns(aGivenLoggedUser);
-        }
-
-        private static (User user, User userFriend) AGivenUserWithOneFriend() {
-            var user = new User();
-            var userFriend = new User();
-            user.AddFriend(userFriend);
-            return (user, userFriend);
         }
     }
 }
