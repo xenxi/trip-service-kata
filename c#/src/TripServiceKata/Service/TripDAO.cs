@@ -4,8 +4,7 @@ using TripServiceKata.Exception;
 
 namespace TripServiceKata.Service
 {
-    public class TripDAO
-    {
+    public class TripDAO : ITripDAO {
         public List<Trip> FindTripsByUser(User user)
         {
             throw new DependendClassCallDuringUnitTestException(

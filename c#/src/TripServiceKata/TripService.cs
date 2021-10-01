@@ -31,7 +31,7 @@ namespace TripServiceKata
 
                 if (isFriend)
                 {
-                    tripList = TripDAO.FindTripsByUser(user);
+                    tripList = new TripDAO().FindTripsByUser(user);
                 }
 
                 return tripList;
