@@ -27,7 +27,7 @@ namespace TripServiceKata.Tests {
         }
 
         [Fact]
-        public void trips_be_empty()
+        public void trips_be_empty_when_they_are_not_friends()
         {
             var aGivenUser = new User();
             _userSession.GetLoggedUser().Returns(aGivenUser);
