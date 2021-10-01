@@ -38,7 +38,7 @@ namespace TripServiceKata.Tests {
         }
 
         [Fact]
-        public void found_trips()
+        public void found_trips_when_they_are_friends()
         {
             var aGivenLoggedUser = new User();
             var aGivenUser = new User();
@@ -51,5 +51,6 @@ namespace TripServiceKata.Tests {
 
             trips.Should().BeSameAs(aExpectedListOfTrip);
         }
+
     }
 }
