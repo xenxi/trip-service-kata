@@ -20,16 +20,7 @@ namespace TripServiceKata
             var loggedUser = GetLoggedUser();
 
             var tripList = new List<Trip>();
-            var isFriend = false;
-
-            foreach (var friend in user.GetFriends())
-            {
-                if (friend.Equals(loggedUser))
-                {
-                    isFriend = true;
-                    break;
-                }
-            }
+            var isFriend = IsFriend(user, loggedUser);
 
             if (isFriend)
             {
@@ -38,6 +29,19 @@ namespace TripServiceKata
 
             return tripList;
 
+        }
+
+        private static bool IsFriend(User user, User loggedUser) {
+            var isFriend = false;
+
+            foreach (var friend in user.GetFriends()) {
+                if (friend.Equals(loggedUser)) {
+                    isFriend = true;
+                    break;
+                }
+            }
+
+            return isFriend;
         }
 
         private User GetLoggedUser() {
