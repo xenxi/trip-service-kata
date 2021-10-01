@@ -14,5 +14,15 @@ namespace TripServiceKata.Tests
 
             aGivenUser.GetFriends().Should().Contain(aGivenFriend);
         }
+
+        [Fact]
+        public void not_be_friend() {
+            var aGivenUser = UserMother.Create();
+            var aGivenFriend = UserMother.Create();
+
+            var areFriends = aGivenUser.IsFriend(aGivenFriend);
+
+            areFriends.Should().BeFalse();
+        }
     }
 }
