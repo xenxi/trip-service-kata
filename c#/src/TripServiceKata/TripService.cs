@@ -9,6 +9,7 @@ namespace TripServiceKata
     {
         private readonly IUserSession _userSession;
         private readonly ITripDAO _tripDao;
+        private static readonly List<Trip> NO_TRIPS = new List<Trip>();
 
         public TripService(IUserSession userSession, ITripDAO tripDao) {
             _userSession = userSession;
@@ -21,7 +22,7 @@ namespace TripServiceKata
 
             return IsFriend(user, loggedUser) 
                 ? _tripDao.FindTripsByUser(user) 
-                : new List<Trip>();
+                : NO_TRIPS;
         }
 
         private static bool IsFriend(User user, User loggedUser) {
