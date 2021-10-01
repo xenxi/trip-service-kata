@@ -68,3 +68,5 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+/.vs
+/c#/.vs/TripServiceKata/DesignTimeBuild/.dtbcache.v2
