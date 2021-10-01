@@ -4,8 +4,6 @@ using TripServiceKata.Exception;
 namespace TripServiceKata.Service
 {
     public class UserSession : IUserSession {
-        private static readonly IUserSession userSession = new UserSession();
-
         private UserSession()
         {
         }
