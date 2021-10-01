@@ -16,17 +16,6 @@ namespace TripServiceKata.Entity
             friends.Add(user);
         }
 
-        public bool IsFriend(User loggedUser) {
-            var isFriend = false;
-
-            foreach (var friend in GetFriends()) {
-                if (friend.Equals(loggedUser)) {
-                    isFriend = true;
-                    break;
-                }
-            }
-
-            return isFriend;
-        }
+        public bool IsFriend(User loggedUser) => friends.Contains(loggedUser);
     }
 }
