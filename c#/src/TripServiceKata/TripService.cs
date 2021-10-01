@@ -19,13 +19,9 @@ namespace TripServiceKata
         {
             var loggedUser = GetLoggedUser();
 
-            if (IsFriend(user, loggedUser))
-            {
-               return _tripDao.FindTripsByUser(user);
-            }
-
-            return new List<Trip>();
-
+            return IsFriend(user, loggedUser) 
+                ? _tripDao.FindTripsByUser(user) 
+                : new List<Trip>();
         }
 
         private static bool IsFriend(User user, User loggedUser) {
