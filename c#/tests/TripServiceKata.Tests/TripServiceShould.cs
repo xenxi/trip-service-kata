@@ -29,7 +29,7 @@ namespace TripServiceKata.Tests {
         [Fact]
         public void trips_be_empty_when_they_are_not_friends() {
             var aGivenUser = new User();
-            _userSession.GetLoggedUser().Returns(aGivenUser);
+            ShouldFindLoggedUser(aGivenUser);
 
             var trips = _service.GetTripsByUser(aGivenUser);
 
@@ -39,13 +39,17 @@ namespace TripServiceKata.Tests {
         [Fact]
         public void found_trips_when_they_are_friends() {
             var (aGivenUser, aGivenLoggedUser) = AGivenUserWithOneFriend();
-            _userSession.GetLoggedUser().Returns(aGivenLoggedUser);
-            List<Trip> aExpectedListOfTrip = new List<Trip>();
+            ShouldFindLoggedUser(aGivenLoggedUser);
+            var aExpectedListOfTrip = new List<Trip>();
             _tripDao.FindTripsByUser(aGivenUser).Returns(aExpectedListOfTrip);
 
             var trips = _service.GetTripsByUser(aGivenUser);
 
             trips.Should().BeSameAs(aExpectedListOfTrip);
+        }
+
+        private void ShouldFindLoggedUser(User aGivenLoggedUser) {
+            _userSession.GetLoggedUser().Returns(aGivenLoggedUser);
         }
 
         private static (User user, User userFriend) AGivenUserWithOneFriend() {
