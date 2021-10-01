@@ -5,19 +5,21 @@ using TripServiceKata.Exception;
 using TripServiceKata.Service;
 using Xunit;
 
-namespace TripServiceKata.Tests
-{
-    public class TripServiceShould
-    {
+namespace TripServiceKata.Tests {
+    public class TripServiceShould {
+        private readonly IUserSession _userSession;
+        private readonly TripService _service;
+
+        public TripServiceShould() {
+            _userSession = Substitute.For<IUserSession>();
+            _service = new TripService(_userSession);
+        }
+
         [Fact]
         public void throw_user_not_logged_in_exception() {
-            IUserSession userSession = Substitute.For<IUserSession>();
-            var service = new TripService(userSession);
-
-            Action action = () => service.GetTripsByUser(null);
+            Action action = () => _service.GetTripsByUser(null);
 
             action.Should().Throw<UserNotLoggedInException>();
         }
     }
-
 }
