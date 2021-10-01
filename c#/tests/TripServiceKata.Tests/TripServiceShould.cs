@@ -1,16 +1,23 @@
-﻿using Xunit;
+﻿using System;
+using FluentAssertions;
+using NSubstitute;
+using TripServiceKata.Exception;
+using TripServiceKata.Service;
+using Xunit;
 
 namespace TripServiceKata.Tests
 {
     public class TripServiceShould
     {
         [Fact]
-        public void fail() {
-            var service = new TripService();
+        public void throw_user_not_logged_in_exception() {
+            IUserSession userSession = Substitute.For<IUserSession>();
+            var service = new TripService(userSession);
 
-            service.GetTripsByUser(null);
+            Action action = () => service.GetTripsByUser(null);
 
-            Assert.True(false);
+            action.Should().Throw<UserNotLoggedInException>();
         }
     }
+
 }
