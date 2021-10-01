@@ -17,10 +17,11 @@ namespace TripServiceKata
 
         public List<Trip> GetTripsByUser(User user)
         {
+            var loggedUser = GetLoggedUser();
+
             var tripList = new List<Trip>();
-            var loggedUser = _userSession.GetLoggedUser();
             var isFriend = false;
-            ThrowExceptionIfUserNotLogged(loggedUser);
+
             foreach (var friend in user.GetFriends())
             {
                 if (friend.Equals(loggedUser))
@@ -37,6 +38,12 @@ namespace TripServiceKata
 
             return tripList;
 
+        }
+
+        private User GetLoggedUser() {
+            var loggedUser = _userSession.GetLoggedUser();
+            ThrowExceptionIfUserNotLogged(loggedUser);
+            return loggedUser;
         }
 
         private static void ThrowExceptionIfUserNotLogged(User loggedUser) {
